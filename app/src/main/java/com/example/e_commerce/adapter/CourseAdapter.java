@@ -1,7 +1,12 @@
 package com.example.e_commerce.adapter;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.e_commerce.CoursePage;
 import com.example.e_commerce.R;
 import com.example.e_commerce.model.Course;
 
@@ -36,16 +42,34 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CourseViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CourseViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
         holder.courseBg.setCardBackgroundColor(Color.parseColor(courses.get(position).getColor()));
 
-        int imageId=context.getResources().getIdentifier(courses.get(position).getImg() + "_2","drawable", context.getPackageName());
+        int imageId = context.getResources().getIdentifier(courses.get(position).getImg() + "_2", "drawable", context.getPackageName());
         holder.courseImage.setImageResource(imageId);
 
         holder.courseTitle.setText(courses.get(position).getTitle());
         holder.courseDate.setText(courses.get(position).getDate());
         holder.courseLevel.setText(courses.get(position).getLevel());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, CoursePage.class);
+
+                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation((Activity) context, new Pair<View, String >(holder.courseImage,"courseImage"));
+
+                intent.putExtra("courseBg", Color.parseColor(courses.get(position).getColor()));
+                intent.putExtra("courseImage", imageId);
+                intent.putExtra("courseTitle", courses.get(position).getTitle());
+                intent.putExtra("courseDate", courses.get(position).getDate());
+                intent.putExtra("courseLevel", courses.get(position).getLevel());
+                intent.putExtra("courseText", courses.get(position).getText());
+
+                context.startActivity(intent,options.toBundle());
+            }
+        });
 
     }
 
