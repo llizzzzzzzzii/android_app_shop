@@ -20,7 +20,11 @@ public class MainActivity extends AppCompatActivity {
 
     CategoryAdapter categoryAdapter;
 
-    CourseAdapter courseAdapter;
+   static CourseAdapter courseAdapter;
+
+    static List<Course> courseList = new ArrayList<>();
+
+    static List<Course> fullCoursesList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,10 +40,10 @@ public class MainActivity extends AppCompatActivity {
 
         setCategoryRecycler(categoryList);
 
-        List<Course> courseList = new ArrayList<>();
+        courseList.add(new Course(1, "java", "Profession Java\ndeveloper", "January 1", "elementary", "#424345", "test", 3));
+        courseList.add(new Course(2, "python", "Profession Python\ndeveloper", "January 10", "elementary", "#9FA52D", "test", 3));
 
-        courseList.add(new Course(1, "java", "Profession Java\ndeveloper", "January 1", "elementary", "#424345", "test"));
-        courseList.add(new Course(2, "python", "Profession Python\ndeveloper", "January 10", "elementary", "#9FA52D", "test"));
+        fullCoursesList.addAll(courseList);
 
         setCourseRecycler(courseList);
 
@@ -65,5 +69,24 @@ public class MainActivity extends AppCompatActivity {
 
         categoryAdapter = new CategoryAdapter(this, categoryList);
         categoryRecycler.setAdapter(categoryAdapter);
+    }
+
+    public static void showCoursesByCategory(int category){
+
+        courseList.clear();
+        courseList.addAll(fullCoursesList);
+
+        List<Course> filterCourses = new ArrayList<>();
+
+        for (Course c:courseList){
+            if (c.getCategory()==category){
+                filterCourses.add(c);
+            }
+        }
+
+        courseList.clear();
+        courseList.addAll(filterCourses);
+
+        courseAdapter.notifyDataSetChanged();
     }
 }
