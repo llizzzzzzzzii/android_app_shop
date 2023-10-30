@@ -89,41 +89,41 @@
         android:id="@+id/coursePageTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="250dp"
         android:fontFamily="@font/montserrat_bold"
         android:gravity="center"
         android:text="@string/app_name"
         android:textColor="@color/white"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.475"
         app:layout_constraintStart_toEndOf="@+id/constraintLayout"
-        app:layout_constraintTop_toBottomOf="@+id/coursePageImage" />
+        app:layout_constraintTop_toTopOf="@+id/coursePageImage" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/courseBg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:cardBackgroundColor="@android:color/transparent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:cardElevation="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/constraintLayout"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="@+id/coursePageImage">
 
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
                 <TextView
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/montserrat"
                     android:text="@string/course_start_date"
                     android:textColor="@color/white"
@@ -132,8 +132,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="55dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="5dp"
                     android:fontFamily="@font/montserrat"
                     android:text="@string/course_level"
                     android:textColor="@color/white"
@@ -142,16 +142,16 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
                 <TextView
                     android:id="@+id/coursePageDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
                     android:fontFamily="@font/montserrat_bold"
                     android:text="@string/app_name"
+                    android:layout_marginTop="10dp"
                     android:textColor="@color/white"
                     android:textSize="14sp" />
 
@@ -159,7 +159,7 @@
                     android:id="@+id/coursePageLevel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="40dp"
+                    android:layout_marginStart="65dp"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/montserrat_bold"
                     android:text="@string/app_name"
@@ -177,16 +177,17 @@
         android:id="@+id/coursePageText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="25dp"
         android:fontFamily="@font/montserrat"
-        android:text="@string/course_desc"
+        android:text="@string/java_desc"
         android:textColor="@color/white"
         android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/constraintLayout"
-        app:layout_constraintTop_toBottomOf="@+id/courseBg" />
+        app:layout_constraintTop_toBottomOf="@+id/coursePageTitle" />
 
     <ImageButton
         android:id="@+id/addToCart"
@@ -194,6 +195,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:background="@android:color/transparent"
+        android:onClick="AddToCart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/constraintLayout"
         app:layout_constraintTop_toBottomOf="@+id/coursePageText"
